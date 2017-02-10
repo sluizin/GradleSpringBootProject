@@ -1,0 +1,29 @@
+import org.gradle.plugins.ide.eclipse.model.Facet
+	apply plugin: 'java'
+	apply plugin: 'maven'
+	apply plugin: 'eclipse'
+	apply plugin: 'war'
+	apply plugin: 'eclipse-wtp'
+	version = '1.0'  
+	sourceCompatibility = 1.8   // 设置 JDK 版本
+	targetCompatibility = 1.8
+repositories {
+    maven {url 'https://repo.spring.io/libs-snapshot'}
+}
+dependencies {
+    compile(   
+    'org.springframework.boot:spring-boot-starter-web:2.0.0.BUILD-SNAPSHOT',
+    /*
+    'org.springframework.boot:spring-boot-starter-web:2.0.0.BUILD-SNAPSHOT',
+    'org.springframework.boot:spring-boot-starter-web:1.5.2.BUILD-SNAPSHOT',
+	*/
+	'org.slf4j:slf4j-api:1.7.21'
+    )
+    testCompile 'junit:junit:4.12'
+}
+war {
+    from("WEB-INF/web.xml") {  
+        include "*"  
+        into("WEB-INF")  
+    }  
+}
