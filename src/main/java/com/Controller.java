@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @since jdk1.7
  */
 //@Configuration  
-//@ComponentScan  
+//@ComponentScan
 //@SpringBootApplication 
 //@ComponentScan("com")  
 //@EntityScan("com")  
