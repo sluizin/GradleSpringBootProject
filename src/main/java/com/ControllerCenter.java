@@ -8,12 +8,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 /**
  * @author Sunjian
  * @version 1.0
@@ -24,18 +23,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 //@SpringBootApplication 
 //@ComponentScan("com")  
 //@EntityScan("com")  
-//@RestController
-@EnableAutoConfiguration
+//@RestController //这样相当于Controller的所有方法都标注了@ResponseBody
+@Controller
 @RequestMapping("/hello")
-public class Controller {
-	public static void main(String[] args) throws Exception {
-		SpringApplication.run(Controller.class, args);
-	}
+public class ControllerCenter {
+	@Autowired  
+    ApplicationProfile applicationProfile; 
 	@ResponseBody
 	@RequestMapping
 	public String hello() {
-		String str="Hello Spring-Boot";
+		String str="Hello Spring-Boot applicationProfile.path:"+applicationProfile.path;
 		System.out.println(str);
+		System.out.println("applicationProfile.path:"+applicationProfile.path);
 		return str;
 	}
 
